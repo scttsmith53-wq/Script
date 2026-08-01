@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ae2026">
+<meta name="robots" content="noindex,nofollow">
+<title>Call Script &amp; Coach — Scott Smith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111214;--ink2:#26292e;--paper:#fffdfa;--soft:#f2efe9;--line:#d9d4ca;--muted:#666b72;--red:#ae2026;--red2:#86161b;--gold:#a77b2f;--green:#16865b;--dark:#0e1116;--max:820px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Libre Franklin',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:178px}
+.serif{font-family:'Newsreader',Georgia,serif}.mono{font-family:'Roboto Mono',monospace}
+.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+/* utility + masthead */
+.utility{height:32px;background:var(--dark);color:#d5d7da;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.utility .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.live{display:inline-flex;align-items:center;gap:8px}
+.udot{width:7px;height:7px;border-radius:50%;background:#ef4148;box-shadow:0 0 0 4px rgba(239,65,72,.16)}
+.masthead{border-bottom:4px solid var(--ink);background:var(--paper);text-align:center;padding:14px 0 12px}
+.brand-title{font:700 clamp(32px,8vw,46px)/.92 'Newsreader',Georgia,serif;letter-spacing:-.04em;margin:4px 0 0}
+.brand-sub{margin-top:7px;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* sticky nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,253,250,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);overflow:auto}
+.nav .wrap{height:44px;display:flex;align-items:center;gap:22px;min-width:max-content}
+.nav a{border:0;background:none;padding:0;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#333;white-space:nowrap}
+.nav a:active{color:var(--red)}
+/* section heads */
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;padding-bottom:9px;margin:26px 0 14px;border-bottom:3px solid var(--ink)}
+.sec-title{font:600 24px/1 'Newsreader',Georgia,serif;margin:0}
+.sec-desc{font-size:11px;color:var(--muted);text-align:right}
+/* panic grid */
+.panic{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.panic{grid-template-columns:repeat(3,1fr)}}
+.pbtn{background:#fff;border:1px solid var(--line);border-top:4px solid var(--ink);padding:14px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.pbtn:active{border-color:var(--red);border-top-color:var(--red)}
+.pbtn b{font:600 18px 'Newsreader',Georgia,serif}
+.pbtn span{font-size:11px;color:var(--muted)}
+.pbtn.red{border-top-color:var(--red)}.pbtn.gold{border-top-color:var(--gold)}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);margin:14px 0;scroll-margin-top:120px}
+.card>summary{cursor:pointer;padding:15px 16px;list-style:none;display:flex;align-items:center;gap:12px;font:600 21px/1.1 'Newsreader',Georgia,serif}
+summary::-webkit-details-marker{display:none}
+.card summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid #b3aea3;border-bottom:2px solid #b3aea3;transform:rotate(45deg);transition:.2s}
+.card[open]>summary::after{transform:rotate(-135deg)}
+.kick{font:600 13px 'Roboto Mono',monospace;color:var(--red);flex:none}
+.body{padding:0 16px 18px}
+.lbl{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:18px 0 4px}
+.say{position:relative;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--red);padding:12px 40px 12px 15px;margin:9px 0;color:#1c1e22;font-size:15.5px;line-height:1.55;cursor:pointer}
+.say:active{background:#faf7f1}
+.say::after{content:"⧉";position:absolute;right:12px;top:10px;color:#c3bdb0;font-size:15px}
+.say b{color:var(--red2)}
+.dual{border-left-color:var(--green);background:#f4faf7}
+.dual::before{content:"You're both";display:inline-block;font:800 9.5px 'Libre Franklin';letter-spacing:.1em;text-transform:uppercase;color:#0d6b47;border-bottom:1px solid #bfe6d3;padding-bottom:2px;margin-bottom:6px}
+.tip{color:var(--muted);font-size:13px;margin:9px 0}
+.tip.warn{color:#7a5a12;background:#faf4e4;border:1px solid #e8dab3;padding:9px 12px}
+.tip b{color:var(--ink)}
+.do{color:#0d6b47;font-size:12.5px;font-weight:700;border-left:3px solid var(--green);padding:5px 0 5px 11px;margin:9px 0}
+ol.steps2{margin:6px 0 6px 2px;padding-left:20px;color:#33363b;font-size:14.5px}ol.steps2 li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;border:1px solid var(--line)}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{background:var(--soft);font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+td{font:500 13px 'Roboto Mono',monospace}td:nth-child(odd){font-family:'Libre Franklin';font-weight:600}
+.rateh{font:600 16px 'Newsreader',Georgia,serif;margin:16px 0 2px}
+/* worksheet */
+.field{margin:9px 0}
+.field label{display:block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px}
+.field input,.field textarea{width:100%;border:1px solid #b5b0a5;background:#fff;padding:11px 12px;font-size:15px;color:var(--ink);font-family:inherit}
+.field input:focus,.field textarea:focus{outline:2px solid var(--red);outline-offset:-2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc{background:var(--soft);border:1px solid var(--line);padding:13px;margin-bottom:8px}
+.calc .out{font:600 26px 'Roboto Mono',monospace;color:var(--red2);margin-top:8px}
+.acts{display:flex;gap:10px;margin-top:14px}
+.acts button{flex:1;padding:13px;font:800 11px 'Libre Franklin';letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:1px solid var(--ink)}
+.copyb{background:var(--red);color:#fff;border-color:var(--red)}.copyb:active{background:var(--red2)}
+.clearb{background:#fff;color:var(--ink);flex:0 0 90px}
+/* coach bar */
+.coachbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,253,250,.97);backdrop-filter:blur(10px);border-top:3px solid var(--ink);padding:9px 0 calc(9px + env(safe-area-inset-bottom))}
+.cb{width:min(var(--max),calc(100% - 24px));margin:auto}
+.cb-eyebrow{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 6px}
+#ans{background:#fff;border:1px solid var(--line);border-left:5px solid var(--green);padding:12px 14px;color:#123;font-size:15.5px;line-height:1.5;margin-bottom:9px;display:none;white-space:pre-wrap}
+#ans.err{border-left-color:var(--red);color:var(--red2)}
+.qchips{display:flex;gap:7px;overflow-x:auto;margin-bottom:9px;scrollbar-width:none}
+.qchips::-webkit-scrollbar{display:none}
+.qchip{white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#333;background:#fff;border:1px solid var(--line);padding:7px 11px;cursor:pointer}
+.qchip:active{border-color:var(--red);color:var(--red)}
+.row{display:flex;gap:8px}
+#q{flex:1;background:#fff;border:1px solid #b5b0a5;padding:12px 13px;font-size:15.5px;color:var(--ink)}
+#q:focus{outline:2px solid var(--red);outline-offset:-2px}
+#ask{background:var(--red);border:0;color:#fff;font:800 12px 'Libre Franklin';letter-spacing:.06em;text-transform:uppercase;padding:0 20px;cursor:pointer}
+#ask:active{background:var(--red2)}#ask:disabled{opacity:.6}
+.hint{color:var(--muted);font-size:10px;text-align:center;margin-top:6px}
+.toast{position:fixed;left:50%;bottom:205px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 12px 'Libre Franklin';letter-spacing:.05em;text-transform:uppercase;padding:9px 15px;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+.toast.on{opacity:.97;bottom:214px}
+</style></head><body>
+
+<div class="utility"><div class="wrap"><span class="live"><span class="udot"></span>Call Script — Live</span><span>Agent + Lender</span></div></div>
+<div class="masthead">
+  <div class="eyebrow">Scott Smith · Real Estate + Mortgage</div>
+  <h1 class="brand-title">Call Script</h1>
+  <div class="brand-sub">Homes first · you're the agent and the lender</div>
+</div>
+<nav class="nav"><div class="wrap">
+  <a href="#open">Open</a><a href="#connect">Connect</a><a href="#objs">Objections</a><a href="#search">Zillow</a><a href="#qual">Qualify</a><a href="#work">Worksheet</a><a href="#close">Confirm</a><a href="#seller">Seller</a><a href="#rates">Rates</a>
+</div></nav>
+
+<div class="wrap">
+
+  <div class="sec-head"><h2 class="sec-title">They Said…</h2><div class="sec-desc">Tap for the response</div></div>
+  <div class="panic">
+    <button class="pbtn red" data-go="c-agent"><b>Has an agent</b><span>Earn it — you're both</span></button>
+    <button class="pbtn red" data-go="c-lender"><b>Has a lender</b><span>Agent + lender edge</span></button>
+    <button class="pbtn gold" data-go="c-credit"><b>Bad credit</b><span>You're the lender</span></button>
+    <button class="pbtn gold" data-go="c-money"><b>No money</b><span>Programs + grants</span></button>
+    <button class="pbtn" data-go="c-wait"><b>Waiting</b><span>Keep them dreaming</span></button>
+    <button class="pbtn" data-go="c-browse"><b>Just browsing</b><span>Everyone starts here</span></button>
+  </div>
+
+  <div class="sec-head"><h2 class="sec-title">The Flow</h2><div class="sec-desc">Tap a line to copy it</div></div>
+
+  <details class="card" id="open" open><summary><span class="kick">01</span>New leads — be intro ready</summary><div class="body">
+    <div class="say">"Hi….is this (Lead Name)? Hey (Lead Name), it's Scott Smith."</div>
+    <div class="say"><b>FB:</b> "We connected on Facebook and it looks like you were looking at homes in (City)! So, is just (CITY) you're looking in?"</div>
+    <div class="say"><b>Web:</b> "We connected on my website while you were looking at homes in (City)! So, is it just (CITY) you're looking in?"</div>
+  </div></details>
+
+  <details class="card" id="connect" open><summary><span class="kick">02</span>Connect — all non-objections</summary><div class="body">
+    <div class="lbl">Excited to buy</div>
+    <div class="say">"Nice! I love (CITY)! It's a great area! Why are you wanting to be in (CITY)… Is it close to work or family or what makes it attractive?"</div>
+    <div class="do">Connect with them.</div>
+    <div class="say">"What are you looking for in your new home? And dream a little with me… what's important for you and your family?"</div>
+    <div class="do">Then go to the Qualification (DISC) section.</div>
+  </div></details>
+
+  <details class="card" id="objs"><summary><span class="kick">03</span>Objections</summary><div class="body">
+
+    <div id="c-wait"><div class="lbl">Waiting (school, lease ends, after an event, rates drop, next year)</div>
+      <div class="say">"I totally get that. When that happens, what are you looking for in your new home? And dream a little with me… what's important for you and your family?"</div>
+      <div class="do">Connect. The timeline just tells you when to line up financing — which you handle. Then go to Qualification.</div></div>
+
+    <div id="c-browse"><div class="lbl">Browsing (just looking, window shopping, curb appeal)</div>
+      <div class="say">"No problem there! You have to start somewhere and I can definitely help you with the process — So, (Lead Name), what type of property are you looking for? Are you wanting a single family home or are you wanting more of a townhome or condo?"</div>
+      <div class="say">"So, is it just (CITY) you're looking in? What are you looking for in your new home? And dream a little with me… what's important for you and your family?"</div></div>
+
+    <div id="c-credit"><div class="lbl">Bad credit</div>
+      <div class="say">"I get it… but the good news is that you don't need perfect credit to buy a house, and we have programs where you can buy a house with nothing down once your credit hits a certain level. Where do you think your credit's at right now?"</div>
+      <div class="say dual">"If you're over 580 — I think we could still help you qualify for sure. And since I'm also the lender, I can look at exactly where you're at and what you'd qualify for — no separate person to chase. I've helped a lot of people in your exact situation."</div>
+      <div class="say">"What are you looking for in your new home? And dream a little with me… what's important for you and your family?"</div></div>
+
+    <div id="c-money"><div class="lbl">No money</div>
+      <div class="say">"I think you would be surprised at how cheap it can be to buy a home. There are loan programs that make buying a home cheaper than rent! There are even grants out there that cover your entire down payment!"</div>
+      <div class="say dual">"And I do the financing side myself, so I know these programs cold — we'll find the one that fits you."</div>
+      <div class="say">"What are you looking for in your new home? And dream a little with me… what's important for you and your family?"</div></div>
+
+    <div id="c-agent"><div class="lbl">I already have an agent</div>
+      <div class="say">"No problem…. There's lots of part time agents out there. What's their name?"</div>
+      <ol class="steps2"><li>Ok….. and when is the last time you guys went and looked at a house?</li><li>When is the next time you're going out?</li><li>Have you written an offer on a home yet, or have you signed a buyer agency agreement with someone?</li></ol>
+      <div class="do">If YES → when does it end? Politely end the call. &nbsp;·&nbsp; If NO → say this:</div>
+      <div class="say dual">"I would love the chance to earn your business, and what I like to do is offer my clients a credit from my commission to cover some of their closing costs or to get an even better interest rate! And here's what most agents can't do — I'm also your lender, so it's one person for the home AND the financing, aligned incentives, fewer surprises."</div>
+      <div class="say">"What price range are you guys looking in? ______. I can give you a credit of $______ when we close on your new home that you can use towards closing costs or getting a lower mortgage payment. So, (Client First Name), let's talk about what you're looking for in a new home… And dream a little with me… what's important for you and your family?"</div></div>
+
+    <div id="c-lender"><div class="lbl">I already have a lender <span style="font-weight:600;color:#a39d90;text-transform:none;letter-spacing:0">(new — your dual edge)</span></div>
+      <div class="say dual">"That's great — are you fully underwritten, or just pre-qualified? Here's my edge: I'm also a licensed agent, so I can be your agent AND your lender — one person, one timeline, and I'll match or beat what you've got and credit some of my commission toward your closing costs. Worst case, you've got a backup. So let's talk homes — what are you looking for in your new home?"</div></div>
+
+  </div></details>
+
+  <details class="card" id="search"><summary><span class="kick">04</span>Have Zillow pulled up — search together</summary><div class="body">
+    <div class="say">"Let's jump online and look together and see what's available for you and what fits in your budget. Can you jump on Zillow with me and let's just see what we can find?"</div>
+    <div class="lbl">Zillow main page</div>
+    <ol class="steps2"><li>Address, neighborhood, city, ZIP</li><li>Filters at the top of the page</li><li>Adjust price point</li><li>Pick # of bedrooms and bathrooms</li><li>Select home type</li></ol>
+    <div class="do">Click Apply at the bottom of the page.</div>
+    <div class="say">"Let's see what pulls up and see which ones we want to go look at in person…. I know that your 'must haves' in your new home are ______________ so I am trying to find a home that has that."</div>
+    <div class="tip warn">You are NOT looking for perfect. You are looking for nice-looking homes that check a few boxes.</div>
+    <div class="say">"Ok! I found one that might work for you! I'm going to text it over! What's your cell number? … You should have it… What do you think?"</div>
+    <div class="do">Allow them time to look. Talk as needed — reference pictures. TEXT AS MANY HOMES AS NEEDED. LIVE IN THIS SECTION!</div>
+    <div class="lbl">When they like a home</div>
+    <div class="say">"Let's do this — let's go tour some of these in person! That's the fun part anyway! I have time (Day of the Week) at ______ or ______. What works best for you? How much time do you have available?"</div>
+    <div class="do">Plan on 3 houses an hour.</div>
+    <div class="say">"I am going to keep finding houses for you. Let me know which ones you like. Do me a favor and find some for me as well, because you know what you are really wanting and that will help me dial in our search. And then I'll just create a schedule for us on (Day of the Week)."</div>
+    <div class="say">"Oh… and just to make sure we are looking at the right homes, I did have a few more questions for you…"</div>
+  </div></details>
+
+  <details class="card" id="qual"><summary><span class="kick">05</span>Get DISC — qualification</summary><div class="body">
+    <div class="tip warn">Frame every money question as home-shopping ("so I show you the right homes"), not a loan app. Record answers on the Worksheet tab.</div>
+    <div class="lbl">#1–2 · Down payment &amp; credit</div>
+    <div class="say">"Are you wanting to bring in a down payment, or do you want to take advantage of one of our down payment assistance (DPA) programs?"</div>
+    <div class="do">If they HAVE a down payment:</div>
+    <div class="say">"What do you have saved? $______ Where is that coming from? ______ What do you think your credit score is? ______"</div>
+    <div class="do">If USING DPA:</div>
+    <div class="say">"In order to qualify for that program, you need a 620 credit score. What do you think your credit score is right now?"</div>
+    <div class="tip"><b>Over 620:</b> "Congratulations! You would totally qualify!"</div>
+    <div class="say">"Oh ok…. no worries. We can hopefully still help you…. what dropped your score? Did you miss some payments recently?"</div>
+    <div class="do">Find out what happened — and since the lender is you, "we'll sort it out together."</div>
+    <div class="lbl">#3 · Employment &amp; income</div>
+    <div class="say">"What do you do for a living? ______ What did you make on your last W2? $______ Anybody else on the loan? ______ Name/Relation: ______ What do they do for a living? ______ What did they make on their last W2? $______"</div>
+    <div class="tip"><b>If 1099:</b> "Have you filed taxes on this business for 2 years? Do you know what your income is after write-offs? $______"</div>
+    <div class="lbl">#4 · Debt</div>
+    <div class="say">"The bank is going to look at your debt that appears on your credit report. Do you have any car payments, credit cards, or student loan payments? Car payments: $______ Other vehicles/motorcycles/toys: $______ Credit card payments: $______ Student loan payments: $______"</div>
+  </div></details>
+
+  <details class="card" id="work"><summary><span class="kick" style="color:var(--green)">✎</span>Worksheet — type it as you go</summary><div class="body">
+    <div class="calc">
+      <div class="lbl" style="margin-top:0">Quick affordability</div>
+      <div class="grid2">
+        <div class="field"><label>Household income (annual)</label><input id="w_income" inputmode="numeric" placeholder="$"></div>
+        <div class="field"><label>Monthly debts (car, cards, loans)</label><input id="w_debts" inputmode="numeric" placeholder="$"></div>
+      </div>
+      <div class="out" id="w_afford">Enter income to estimate…</div>
+      <div class="tip" style="margin:6px 0 0">Rough only — ~43% DTI, ~$700/mo per $100k all-in. Confirm with a real pre-approval (that's you).</div>
+    </div>
+
+    <div class="lbl">Buyer</div>
+    <div class="grid2"><div class="field"><label>Name</label><input id="w_name"></div><div class="field"><label>Area / city</label><input id="w_area"></div></div>
+    <div class="field"><label>Must-haves</label><input id="w_must"></div>
+    <div class="field"><label>Price range</label><input id="w_price"></div>
+
+    <div class="lbl">Down payment &amp; credit</div>
+    <div class="grid2"><div class="field"><label>Saved</label><input id="w_dp" placeholder="$"></div><div class="field"><label>Source</label><input id="w_dpsrc"></div></div>
+    <div class="field"><label>Credit score (guess)</label><input id="w_credit"></div>
+
+    <div class="lbl">Employment &amp; income</div>
+    <div class="grid2"><div class="field"><label>Job</label><input id="w_job"></div><div class="field"><label>Last W2</label><input id="w_w2" placeholder="$"></div></div>
+    <div class="grid2"><div class="field"><label>Co-borrower (name/rel)</label><input id="w_co"></div><div class="field"><label>Their W2</label><input id="w_cow2" placeholder="$"></div></div>
+    <div class="field"><label>1099? (2 yrs filed / income after write-offs)</label><input id="w_1099"></div>
+
+    <div class="lbl">Debts on credit ($/mo)</div>
+    <div class="grid2"><div class="field"><label>Car(s)</label><input id="w_car"></div><div class="field"><label>Credit cards</label><input id="w_cc"></div></div>
+    <div class="grid2"><div class="field"><label>Student loans</label><input id="w_sl"></div><div class="field"><label>Other / toys</label><input id="w_other"></div></div>
+
+    <div class="field"><label>Notes</label><textarea id="w_notes" rows="3"></textarea></div>
+
+    <div class="acts"><button class="copyb" id="w_copy">Copy for GHL</button><button class="clearb" id="w_clear">Clear</button></div>
+    <div class="tip">Auto-saved on this phone. "Copy for GHL" grabs it all so you can paste into the contact.</div>
+  </div></details>
+
+  <details class="card" id="close"><summary><span class="kick">06</span>Confirm the appointment</summary><div class="body">
+    <div class="lbl">If everything looks good</div>
+    <div class="say dual">"Everything sounds good, (Lead Name)! I think you'll qualify no problem and I'm excited to start looking at homes with you! And here's the best part — I'm your agent AND your loan officer, so I'll get you pre-approved myself. No handoff, no separate lender, no keyboard for you. Like I mentioned, I'm going to keep sending you homes — just let me know what you like and don't like so I can figure out your style."</div>
+    <div class="say">"And let's have that open communication… as you see houses online that you like, text them over to me and I'll add those to our tour on (Day)! So, 100% we'll meet on (Day) at (Time) (am/pm), and let's just confirm what we want to look at in person on (Day Before). And one more thing… please add me as a contact in your phone. My name again is Scott Smith — your agent and lender — and my number is ______. I'm looking forward to meeting you!"</div>
+    <div class="lbl">If we should pre-approve first</div>
+    <div class="say dual">"I just want us to be 100% sure we're looking at the right houses and staying within our budget — so let's get you pre-approved first. Good news: that's me too, so it's the same person the whole way, quick and easy, nobody to chase. When's a good time for about 10 minutes? … And add me in your phone — Scott Smith, your agent and lender, my cell is ______. I'm excited to start looking at houses with you!"</div>
+  </div></details>
+
+  <details class="card" id="seller"><summary><span class="kick">07</span>Sellers — there's a home to sell</summary><div class="body">
+    <div class="lbl">If there is a house to sell</div>
+    <div class="say">"When did you buy your home? ______ What was the purchase price? ______ Do you remember your down payment amount? ______ How much do you think your home is worth? $______ Is that what some of your neighbor's houses sold for? ______ How much do you owe on your home? $______ Are you wanting to put the equity from your current home into the new home? ______"</div>
+    <div class="say dual">"I love that! It's going to make your new purchase super easy! And since I do both sides, I'll line up the sale AND your new financing so they close clean. I'm going to do some research and put together a market analysis for you to give you an idea of value."</div>
+    <div class="lbl">Upgrades &amp; timeframe</div>
+    <div class="say">"Can you tell me about all the upgrades you have made to your home: ______ What year were the upgrades done in: ______ What did you spend on those upgrades? ______ What's your current address? ______ When are you wanting your home to get listed? ______"</div>
+    <div class="say">"The goal of this whole process and my job is to get you the most amount of money that the market will allow — so we just have to price it correctly. And I work for you!"</div>
+    <div class="lbl">Set the appointment</div>
+    <div class="say">"So, the next step is for me to come out there and see the home in person. I always tell people that their house doesn't have to be perfectly clean for me to see it. I'm just going to walk through it to make sure we price it right. What's a good day for you guys when I can come out? Does this weekend work? ______"</div>
+    <div class="say">"Well, (Lead Name), thanks for your time today! I'm looking forward to meeting you at your home on (Day) at (Time). If you can just do me another favor… when we hang up, go ahead and save me as a contact in your cell phone. My name again is Scott Smith, and this is my cell phone number: ______. See you on (Day)!"</div>
+    <div class="do">The end. Go get that listing!</div>
+  </div></details>
+
+  <details class="card" id="rates"><summary><span class="kick">08</span>Payment cheat-sheet — 740 score</summary><div class="body">
+    <div class="tip">Ballpark total payments. Ask the coach or me to refresh — rates move.</div>
+    <div class="rateh">FHA · 3.5% down · 1% buydown · ~6.1%</div>
+    <table><tr><th>Price</th><th>Payment</th><th>Price</th><th>Payment</th></tr><tr><td>$200k</td><td>$1,571</td><td>$500k</td><td>$3,328</td></tr><tr><td>$300k</td><td>$2,156</td><td>$600k</td><td>$4,013</td></tr><tr><td>$400k</td><td>$2,742</td><td>$700k</td><td>$4,599</td></tr></table>
+    <div class="rateh">CHFA · $1,000 down · ~6.375%</div>
+    <table><tr><th>Price</th><th>Payment</th><th>Price</th><th>Payment</th></tr><tr><td>$200k</td><td>$1,641</td><td>$500k</td><td>$3,513</td></tr><tr><td>$300k</td><td>$2,265</td><td>$600k</td><td>$4,236</td></tr><tr><td>$400k</td><td>$2,889</td><td>$700k</td><td>$4,860</td></tr></table>
+    <div class="rateh">VA · $0 down · 1% buydown · ~6.1%</div>
+    <table><tr><th>Price</th><th>Payment</th><th>Price</th><th>Payment</th></tr><tr><td>$200k</td><td>$1,609</td><td>$500k</td><td>$3,524</td></tr><tr><td>$300k</td><td>$2,214</td><td>$600k</td><td>$4,129</td></tr><tr><td>$400k</td><td>$2,819</td><td>$700k</td><td>$4,734</td></tr></table>
+    <div class="rateh">Conventional · 20% down · 1% buydown · ~6.3%</div>
+    <table><tr><th>Price</th><th>Payment</th><th>Price</th><th>Payment</th></tr><tr><td>$200k</td><td>$1,442</td><td>$500k</td><td>$3,055</td></tr><tr><td>$300k</td><td>$1,933</td><td>$600k</td><td>$3,566</td></tr><tr><td>$400k</td><td>$2,444</td><td>$700k</td><td>$4,077</td></tr></table>
+    <div class="tip">Reference figures dated Jul 14, 2025.</div>
+  </div></details>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<div class="coachbar"><div class="cb">
+  <div id="ans"></div>
+  <div class="cb-eyebrow">Ask the Coach · live</div>
+  <div class="qchips">
+    <span class="qchip">They have an agent</span><span class="qchip">They have a lender</span><span class="qchip">Rate is too high</span><span class="qchip">I want to think about it</span><span class="qchip">Renting is cheaper</span><span class="qchip">Bad credit</span><span class="qchip">Not ready yet</span>
+  </div>
+  <div class="row"><input id="q" placeholder="What did they just say?" autocomplete="off"><button id="ask">Ask</button></div>
+  <div class="hint">Grounded in your script + Tracy, Carnegie &amp; Voss</div>
+</div></div>
+
+<script>
+var API='https://qfhfuesnjfuwfujhvgpa.supabase.co/functions/v1/script';
+var K='sr-coach-7f3a91c8b2';
+var ansEl=document.getElementById('ans'),qEl=document.getElementById('q'),askEl=document.getElementById('ask'),toast=document.getElementById('toast');
+function flash(m){toast.textContent=m;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on');},1100);}
+function showAns(t,err){ansEl.textContent=t;ansEl.className=err?'err':'';ansEl.style.display='block';ansEl.scrollIntoView({block:'nearest'});}
+function ask(){var q=qEl.value.trim();if(!q)return;showAns('Thinking…',false);askEl.disabled=true;
+fetch(API+'?ask='+encodeURIComponent(q)+'&k='+K).then(function(r){return r.json();}).then(function(d){showAns(d.answer||'No answer.',false);}).catch(function(){showAns('Could not reach the coach. Try again.',true);}).then(function(){askEl.disabled=false;});}
+askEl.onclick=ask;qEl.addEventListener('keydown',function(e){if(e.key==='Enter')ask();});
+var qc=document.querySelectorAll('.qchip');for(var i=0;i<qc.length;i++){qc[i].onclick=function(){qEl.value=this.textContent;ask();};}
+var pb=document.querySelectorAll('.pbtn');for(var j=0;j<pb.length;j++){pb[j].onclick=function(){var id=this.getAttribute('data-go');document.getElementById('objs').open=true;var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.transition='background .3s';el.style.background='#fbf3d9';setTimeout(function(){el.style.background='';},900);}};}
+document.querySelectorAll('.nav a').forEach(function(a){a.onclick=function(){var el=document.getElementById(this.getAttribute('href').slice(1));if(el&&el.tagName==='DETAILS')el.open=true;};});
+document.querySelectorAll('.say').forEach(function(s){s.onclick=function(){var t=this.innerText.replace(/^(FB:|Web:)\s*/,'');if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){flash('Copied');},function(){});}};});
+
+// ---- DISC worksheet ----
+(function(){
+ var ids=['w_income','w_debts','w_name','w_area','w_must','w_price','w_dp','w_dpsrc','w_credit','w_job','w_w2','w_co','w_cow2','w_1099','w_car','w_cc','w_sl','w_other','w_notes'];
+ function el(id){return document.getElementById(id);}
+ function num(v){return parseFloat((v||'').replace(/[^0-9.]/g,''))||0;}
+ function money(n){return '$'+Math.round(n).toLocaleString();}
+ function save(){var o={};ids.forEach(function(id){o[id]=el(id).value;});try{localStorage.setItem('disc',JSON.stringify(o));}catch(e){}}
+ function afford(){var inc=num(el('w_income').value),d=num(el('w_debts').value),o=el('w_afford');if(!inc){o.textContent='Enter income to estimate…';return;}var maxPay=inc/12*0.43-d;if(maxPay<=0){o.textContent='Debts too high for a rough estimate';return;}o.textContent='~'+money(maxPay)+'/mo · up to ~'+money(maxPay/700*100000);}
+ try{var s=JSON.parse(localStorage.getItem('disc')||'{}');ids.forEach(function(id){if(s[id]!=null)el(id).value=s[id];});}catch(e){}
+ afford();
+ ids.forEach(function(id){el(id).addEventListener('input',function(){save();if(id==='w_income'||id==='w_debts')afford();});});
+ el('w_copy').onclick=function(){
+   function L(lbl,id){var v=el(id).value.trim();return v?lbl+': '+v+'\n':'';}
+   var t='BUYER — '+(el('w_name').value||'(no name)')+'\n';
+   t+=L('Area','w_area')+L('Price range','w_price')+L('Must-haves','w_must');
+   var dp=el('w_dp').value.trim(),src=el('w_dpsrc').value.trim();
+   if(dp||src)t+='Down payment: '+dp+(src?' from '+src:'')+'\n';
+   t+=L('Credit','w_credit')+L('Job','w_job')+L('Last W2','w_w2')+L('Co-borrower','w_co')+L('Co W2','w_cow2')+L('1099','w_1099');
+   var deb=[],map={w_car:'car',w_cc:'cards',w_sl:'student',w_other:'other'};
+   ['w_car','w_cc','w_sl','w_other'].forEach(function(id){if(el(id).value.trim())deb.push(map[id]+' '+el(id).value.trim());});
+   if(deb.length)t+='Debts/mo: '+deb.join(', ')+'\n';
+   var af=el('w_afford').textContent;if(af.indexOf('~')>=0)t+='Affordability (rough): '+af+'\n';
+   t+=L('Notes','w_notes');
+   if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){flash('Copied for GHL');},function(){flash('Copy failed');});
+ };
+ el('w_clear').onclick=function(){if(!confirm('Clear the worksheet?'))return;ids.forEach(function(id){el(id).value='';});save();afford();flash('Cleared');};
+})();
+</script></body></html>
